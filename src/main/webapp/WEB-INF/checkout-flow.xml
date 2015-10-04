@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+         start-state="enterCustomerId">
+         
+     
+         
+         
+         <var name="order" class="com.virtualpairprogrammers.domain.Order"/>
+         
+         <on-start>
+         	<evaluate expression="order.setBooksOrdered(cart.allItems)"/>
+         </on-start>
+         
+         <view-state id="enterCustomerId" view="/enterCustomerId.jsp">
+         	<transition on="findCustomer"  to="lookUpCustomer"/>
+         	<transition on="newCustomer" to="newCustmerViewState" />
+         </view-state>
+         
+        
+         
+         <view-state id="newCustmerViewState" view="/newCutomer.jsp" model="order" >
+         	
+         	<transition on="addCustomer" to="registerNewCustomer"/>
+         </view-state>
+         
+          <action-state id="registerNewCustomer" >
+         	  <evaluate expression="accountsService.createCustomer(order.customer.login,order.customer.email, 
+         														order.customer.password, order.customer.firstName,
+         														order.customer.lastName, order.customer.street,
+         														order.customer.zip, order.customer.city,
+         														order.customer.state, order.customer.country)"/>
+			
+         			          
+	           <transition on="success" to="showOrder" >
+					<evaluate expression="accountsService.findCustomer(order.customer.login, order.customer.password)" 
+	         			  result="requestScope.customer"/>	
+	         		<evaluate expression="order.setCustomer(customer)" />
+	           </transition>
+         </action-state>
+         
+         
+         
+         
+         
+         <view-state id="showOrder" view="/showOrder.jsp">
+         	<transition on="removeBook" to="removeSelectedBook"/>
+         	<transition on="nextStep" to="confirmOrder"/>
+         </view-state>
+         
+         <view-state id="confirmOrder" view="/confirmOrder.jsp">
+         	<transition on="confirmStep" to="finishedAction" />
+         </view-state>
+         
+         <action-state id="finishedAction">
+         	<evaluate expression="accountsService.saveCustomerOrder(order)"/>
+         	<transition on="success" to="finished"/>
+         </action-state>
+         
+         
+         
+         <end-state id="finished" view="/orderRaised.jsp"/>
+         
+         <action-state id="lookUpCustomer">
+         	<evaluate expression="accountsService.findCustomer(requestParameters.login, requestParameters.password)" 
+         			  result="requestScope.customer"/>
+         	
+         	<transition on="success" to="showOrder">
+         		<evaluate expression="order.setCustomer(customer)" />
+         	</transition>
+         	
+         	<transition on-exception="com.virtualpairprogrammers.services.interfaces.CustomerNotFoundException" 
+         	to="enterCustomerId">
+         	
+         		<set name="flashScope.errorMessage" value="resourceBundle.customrtNotFoundMessage"></set>
+         	</transition>
+
+         </action-state>
+         
+         
+         <action-state id="removeSelectedBook">
+         	<evaluate expression="order.removeItem(requestParameters.id)"></evaluate>
+         	<evaluate expression="cart.setShopping(order.booksOrdered)"></evaluate>
+         	<transition to="showOrder"/>
+         </action-state>
+         
+         
+         
+         <on-end>
+         	<evaluate expression="cart.clear()"></evaluate>
+         	<evaluate expression="order.clear()"></evaluate>
+         </on-end>
+         
+         
+         
+         
+         
+      
+</flow>
