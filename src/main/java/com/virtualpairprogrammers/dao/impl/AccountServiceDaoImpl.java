@@ -2,7 +2,6 @@ package com.virtualpairprogrammers.dao.impl;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTemplate;
 import org.springframework.stereotype.Repository;
@@ -31,6 +30,7 @@ public class AccountServiceDaoImpl implements AccountServiceDaoInterface
 	public Customer findCustomer(String login,String password) throws CustomerNotFoundException 
 	{	
 		
+		@SuppressWarnings("unchecked")
 		List<Customer> listCustomer =  template.find("select customer from Customer as customer where customer.login = ? and customer.password = ?",login,password);
 		if (listCustomer.size() == 0)
 			throw new CustomerNotFoundException();

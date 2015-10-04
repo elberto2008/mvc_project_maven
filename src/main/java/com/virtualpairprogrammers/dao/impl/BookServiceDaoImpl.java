@@ -3,7 +3,9 @@ package com.virtualpairprogrammers.dao.impl;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
+
 import static org.apache.commons.logging.LogFactory.getLog;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTemplate;
 import org.springframework.stereotype.Repository;
@@ -21,6 +23,7 @@ public class BookServiceDaoImpl implements BookServiceDaoInterface
 	private JpaTemplate template;
 
 	
+	@SuppressWarnings("unchecked")
 	public List<Book> getAllBooksByAuthor(String author) 
 	{
 		return template.find("select book from Book as book where book.author = ?", author);
@@ -42,6 +45,7 @@ public class BookServiceDaoImpl implements BookServiceDaoInterface
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public List<Book> getEntireCatalogue() 
 	{
 
@@ -63,6 +67,7 @@ public class BookServiceDaoImpl implements BookServiceDaoInterface
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	public List<Book> searchBooksByLooseMatch(String chars) 
 	{
 		log.info(" \n\n\n\n\n\n I am in here searchBooksByLooseMatch ");
