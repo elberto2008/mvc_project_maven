@@ -7,7 +7,7 @@
 	<body>
 	
 		<jsp:include page="/header.jsp"/>
-		<h2>Terms and Conditions<h2>
+		<h2>Terms and Conditions</h2>
 	
 		<ol>
 			<li>This shop is fictional and not very well built.</li>

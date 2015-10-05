@@ -2,7 +2,7 @@
    <head>
 		<title>Loose Search</title>
 		
-		<script type="text/javascript" src="jquery-1.4.2.min.js"/>
+		<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
 		
 		<script type="text/javascript">
 		
