@@ -30,7 +30,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<dependencies>
+	<!-- <dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -220,5 +220,147 @@
 
 
 
-	</dependencies>
+	</dependencies> -->
+	
+	
+<dependencyManagement>
+  	<dependencies>
+	  	<!--  Bill of materials - prevents transitive problems, keeps all versions consistent -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-framework-bom</artifactId>
+			<version>4.1.6.RELEASE</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>  	
+  	</dependencies>
+  </dependencyManagement>
+  
+  <!--  And now, a list of Maven projects that we depend upon -->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.0.2</version>
+		</dependency>
+    <dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-webmvc</artifactId>
+    </dependency>
+   
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+	</dependency>
+
+	
+	<dependency>
+		<groupId>commons-dbcp</groupId>
+		<artifactId>commons-dbcp</artifactId>
+		<version>1.2.2</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.hibernate.javax.persistence</groupId>
+		<artifactId>hibernate-jpa-2.1-api</artifactId>
+		<version>1.0.0.Final</version>
+	</dependency>
+
+	
+
+	
+
+    
+    
+    <!-- Spring Security -->
+    <dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>[4.0.0,)</version>
+	</dependency>
+	
+    <dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>[4.0.0,)</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-ldap</artifactId>
+		<version>[4.0.0,)</version>
+	</dependency>
+    
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-acl</artifactId>
+		<version>[4.0.0,)</version>
+	</dependency>    
+    
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-cas</artifactId>
+		<version>[4.0.0,)</version>
+	</dependency>    
+    
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-openid</artifactId>
+		<version>[4.0.0,)</version>
+	</dependency>    
+    
+    <!-- although SpringMVC declares validation as a dependency, it is set to 
+         provided scope, so it is not a transisitive dependency -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>1.0.0.GA</version>
+    </dependency>
+    
+    <dependency>
+	  <groupId>org.hibernate</groupId>
+	  <artifactId>hibernate-validator</artifactId>
+	  <version>4.3.1.Final</version>
+    </dependency>
+    
+    <dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>servlet-api</artifactId>
+	  <version>2.5</version>
+    </dependency>
+    
+    <dependency>
+	  <groupId>com.lowagie</groupId>
+	  <artifactId>itext</artifactId>
+	  <version>2.1.7</version>
+    </dependency>
+    
+    <dependency>
+	  <groupId>org.apache.poi</groupId>
+	  <artifactId>poi</artifactId>
+	  <version>3.9</version>
+    </dependency>    
+    
+    <dependency>
+	   <groupId>org.springframework.webflow</groupId>
+	   <artifactId>spring-webflow</artifactId>
+	   <version>2.4.1.RELEASE</version>
+  	   <scope>runtime</scope>	   
+    </dependency>
+                    
+	<dependency>
+		<groupId>jstl</groupId>
+		<artifactId>jstl</artifactId>
+		<version>1.2</version>
+		<scope>runtime</scope>
+	</dependency>
+                                  
+    
+  </dependencies>
 </project>

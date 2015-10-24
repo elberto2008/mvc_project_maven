@@ -2,12 +2,14 @@ package com.virtualpairprogrammers.dao.impl;
 
 import java.util.List;
 
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.commons.logging.Log;
 
 import static org.apache.commons.logging.LogFactory.getLog;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.jpa.JpaTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.virtualpairprogrammers.dao.interfaces.BookServiceDaoInterface;
@@ -19,14 +21,19 @@ public class BookServiceDaoImpl implements BookServiceDaoInterface
 {
 	private final static Log log = getLog(BookServiceDaoImpl.class);
 
-	@Autowired
-	private JpaTemplate template;
+
+	
+	@PersistenceContext
+	private EntityManager template;
 
 	
 	@SuppressWarnings("unchecked")
 	public List<Book> getAllBooksByAuthor(String author) 
 	{
-		return template.find("select book from Book as book where book.author = ?", author);
+		return template.createQuery("select book from Book as book where book.author = :author")
+				.setParameter("author", author)
+				.getResultList();
+
 
 	}
 
@@ -49,7 +56,7 @@ public class BookServiceDaoImpl implements BookServiceDaoInterface
 	public List<Book> getEntireCatalogue() 
 	{
 
-		return template.find("select book from Book as book");
+		return template.createQuery("select book from Book as book").getResultList();
 
 	}
 
@@ -73,7 +80,8 @@ public class BookServiceDaoImpl implements BookServiceDaoInterface
 		log.info(" \n\n\n\n\n\n I am in here searchBooksByLooseMatch ");
 		log.info(" \n\n\n\n\n\n I am in here searchBooksByLooseMatch ");
 		log.info(" \n\n\n\n\n\n I am in here searchBooksByLooseMatch ");
-		return template.find("select book from Book as book where book.author like %"+chars+"%");
+		return template.createQuery("select book from Book as book where book.author like %:chars")
+				.setParameter("chars", chars).getResultList();
 	}
 
 }

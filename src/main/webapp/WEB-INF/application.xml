@@ -49,11 +49,11 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</bean>
 
-    <!--JPA template configuration-->
+    <!--JPA template configuration
 	<bean id="jpaTemplate" class="org.springframework.orm.jpa.JpaTemplate">
 		<constructor-arg ref="entityManagerFactory"/>
 	</bean>
-	
+	-->
 	<tx:annotation-driven/>
 	
 	

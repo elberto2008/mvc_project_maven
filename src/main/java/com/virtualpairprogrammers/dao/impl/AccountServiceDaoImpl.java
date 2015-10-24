@@ -2,8 +2,10 @@ package com.virtualpairprogrammers.dao.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.jpa.JpaTemplate;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 
 import com.virtualpairprogrammers.dao.interfaces.AccountServiceDaoInterface;
@@ -18,8 +20,10 @@ public class AccountServiceDaoImpl implements AccountServiceDaoInterface
 {
 
 	
-	@Autowired
-	private JpaTemplate template;
+
+	
+	@PersistenceContext
+	private EntityManager template;
 
 	public void raiseInvoice(Book requiredBook) 
 	{
@@ -31,7 +35,9 @@ public class AccountServiceDaoImpl implements AccountServiceDaoInterface
 	{	
 		
 		@SuppressWarnings("unchecked")
-		List<Customer> listCustomer =  template.find("select customer from Customer as customer where customer.login = ? and customer.password = ?",login,password);
+		List<Customer> listCustomer =  template.createQuery("select customer from Customer as customer where customer.login = :login  and customer.password = :password")
+		.setParameter("login", login).getResultList();
+		
 		if (listCustomer.size() == 0)
 			throw new CustomerNotFoundException();
 		else
