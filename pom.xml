@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -235,7 +235,9 @@
 		</dependency>  	
   	</dependencies>
   </dependencyManagement>
-  
+
+	
+	
   <!--  And now, a list of Maven projects that we depend upon -->
   <dependencies>
     <dependency>
@@ -244,49 +246,36 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.0.2</version>
-		</dependency>
-    <dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>spring-webmvc</artifactId>
-    </dependency>
-   
-    <dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-orm</artifactId>
+    
+      	<dependency>
+    	<groupId>com.oracle</groupId>
+    	<artifactId>ojdbc6.jar</artifactId>
+    	<version>11.2.0</version>
+	   <scope>system</scope>
+    	<systemPath>/Users/elberto/ojdbc6.jar</systemPath>
 	</dependency>
-
+	
+	<dependency>
+		<groupId>org.hibernate.javax.persistence</groupId>
+		<artifactId>hibernate-jpa-2.0-api</artifactId>
+		<version>1.0.1.Final</version>
+	</dependency>
 	
 	<dependency>
 		<groupId>commons-dbcp</groupId>
 		<artifactId>commons-dbcp</artifactId>
 		<version>1.2.2</version>
 	</dependency>
-	
-	<dependency>
-		<groupId>org.hibernate.javax.persistence</groupId>
-		<artifactId>hibernate-jpa-2.1-api</artifactId>
-		<version>1.0.0.Final</version>
-	</dependency>
-	
-	<dependency>
-    	<groupId>org.slf4j</groupId>
-    	<artifactId>slf4j-simple</artifactId>
-    	<version>1.6.1</version>
-	</dependency>
-	
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-web</artifactId>
-		<version>[4.0.0,)</version>
-	</dependency>
 
 	
 
+	
 
+    <dependency>
+	  <groupId>org.springframework</groupId>
+	  <artifactId>spring-webmvc</artifactId>
+    </dependency>
+    
     <!-- Spring Security -->
     <dependency>
 		<groupId>org.springframework.security</groupId>
@@ -362,6 +351,53 @@
 	   <version>2.4.1.RELEASE</version>
   	   <scope>runtime</scope>	   
     </dependency>
+    
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+		<version>[4.0.0,)</version>
+	</dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.6.6</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.6.6</version>
+    </dependency>
+    <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>[4.0.0,)</version>
+	</dependency>
+	<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-core</artifactId>
+	<version>5.0.2.Final</version>
+</dependency>
+
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-entitymanager</artifactId>
+	<version>5.0.2.Final</version>
+</dependency>
+
+
+
+<dependency> 
+    <groupId>xml-apis</groupId>
+    <artifactId>xml-apis</artifactId>
+    <version>1.4.01</version>
+</dependency>
+
+
+	
+
+    
+    
                     
 	<dependency>
 		<groupId>jstl</groupId>
@@ -371,5 +407,4 @@
 	</dependency>
                                   
     
-  </dependencies>
-</project>
+  </dependencies></project>
