@@ -1,0 +1,8 @@
+2015-10-28 20:42:49 INFO  DispatcherServlet:484 - FrameworkServlet 'Dispatcher': initialization started
+2015-10-28 20:42:49 INFO  XmlWebApplicationContext:510 - Refreshing WebApplicationContext for namespace 'Dispatcher-servlet': startup date [Wed Oct 28 20:42:49 MDT 2015]; root of context hierarchy
+2015-10-28 20:42:49 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from ServletContext resource [/WEB-INF/Dispatcher-servlet.xml]
+2015-10-28 20:42:50 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from ServletContext resource [/WEB-INF/application.xml]
+2015-10-28 20:43:22 INFO  DispatcherServlet:484 - FrameworkServlet 'Dispatcher': initialization started
+2015-10-28 20:43:22 INFO  XmlWebApplicationContext:510 - Refreshing WebApplicationContext for namespace 'Dispatcher-servlet': startup date [Wed Oct 28 20:43:22 MDT 2015]; root of context hierarchy
+2015-10-28 20:43:22 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from ServletContext resource [/WEB-INF/Dispatcher-servlet.xml]
+2015-10-28 20:43:23 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from ServletContext resource [/WEB-INF/application.xml]
