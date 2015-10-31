@@ -355,7 +355,6 @@
     <dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-orm</artifactId>
-		<version>[4.0.0,)</version>
 	</dependency>
     <dependency>
         <groupId>org.slf4j</groupId>
@@ -371,7 +370,6 @@
     <dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-core</artifactId>
-		<version>[4.0.0,)</version>
 	</dependency>
 	<dependency>
 	<groupId>org.hibernate</groupId>
@@ -403,7 +401,7 @@
 		<groupId>jstl</groupId>
 		<artifactId>jstl</artifactId>
 		<version>1.2</version>
-		<scope>runtime</scope>
+		<scope>compile</scope>
 	</dependency>
                                   
     
